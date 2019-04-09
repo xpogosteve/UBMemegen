@@ -4,4 +4,4 @@ from app import app
 @app.route('/')
 @app.route('/home')
 def home():
-    return "Hello, World!"
+    return render_template('base.html', title='Home')

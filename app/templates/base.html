@@ -1,0 +1,30 @@
+{% extends "bootstrap/base.html" %}
+{% block head %}
+{{super()}}
+<link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
+{% endblock %}
+{% block navbar %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#">UB MemeGen</a>
+  </div>
+  <ul class="nav navbar-nav">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Hot</a></li>
+    <li><a href="#">New</a></li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li><a href="#">Sign Up</a></li>
+    <li><a href="#">Login</a></li>
+  </ul>
+</div>
+</nav>
+{% endblock %}
+{% block title %}
+  {% if title %}
+    {{ title }} - UB MemeGen
+  {% else %}
+    UB MemeGen
+  {% endif %}
+{% endblock %}
