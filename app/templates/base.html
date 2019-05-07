@@ -3,28 +3,32 @@
 {{super()}}
 <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
 {% endblock %}
-{% block navbar %}
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="#">UB MemeGen</a>
-  </div>
-  <ul class="nav navbar-nav">
-    <li class="active"><a href="#">Home</a></li>
-    <li><a href="#">Hot</a></li>
-    <li><a href="#">New</a></li>
-  </ul>
-  <ul class="nav navbar-nav navbar-right">
-    <li><a href="#">Sign Up</a></li>
-    <li><a href="#">Login</a></li>
-  </ul>
-</div>
-</nav>
-{% endblock %}
 {% block title %}
   {% if title %}
     {{ title }} - UB MemeGen
   {% else %}
     UB MemeGen
   {% endif %}
+{% endblock %}
+{% block navbar %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="{{ url_for('home') }}">UB MemeGen</a>
+  </div>
+  <ul class="nav navbar-nav">
+    <li class="active"><a href="{{ url_for('home') }}">Home</a></li>
+    <li><a href="#">Hot</a></li>
+    <li><a href="#">New</a></li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li><a href="#">Sign Up</a></li>
+    {% if current_user.is_anonymous%}
+    <li><a href="{{ url_for('login') }}">Login</a></li>
+    {% else %}
+    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    (% endif %)
+  </ul>
+</div>
+</nav>
 {% endblock %}
